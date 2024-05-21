@@ -7,19 +7,19 @@ import { Poster } from '../Classes/poster';
   providedIn: 'root',
 })
 export class PosterService {
-  private baseURL = 'http://localhost:8000/poster';
+  private baseURL = 'http://localhost:8000/posters';
 
   constructor(private httpClient: HttpClient) {}
 
   getAllPosters(): Observable<Poster[]> {
-    return this.httpClient.get<Poster[]>(`${this.baseURL}/posters`);
+    return this.httpClient.get<Poster[]>(`${this.baseURL}`);
   }
 
   getPosterById(posterId: number): Observable<Poster> {
     return this.httpClient.get<Poster>(`${this.baseURL}/${posterId}`);
   }
-  getPosterByArtist(artist: String): Observable<Poster>{
+  getPosterByArtist(artist: String): Observable<Poster[]>{
     
-    return this.httpClient.get<Poster>(`${this.baseURL}/poster${artist}`);
+    return this.httpClient.get<Poster[]>(`${this.baseURL}/postersByArtist/${artist}`);
   }
 }

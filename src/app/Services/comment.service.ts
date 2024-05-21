@@ -7,12 +7,12 @@ import { Comment } from '../Classes/comment';
   providedIn: 'root',
 })
 export class CommentService {
-  private baseURL = 'http://localhost:8000/comment'; // replace with your actual API URL
+  private baseURL = 'http://localhost:8000/comments'; // replace with your actual API URL
 
   constructor(private httpClient: HttpClient) {}
 
   getComments(): Observable<Comment[]> {
-    return this.httpClient.get<Comment[]>(`${this.baseURL}/comments`);
+    return this.httpClient.get<Comment[]>(`${this.baseURL}`);
   }
   
   getCommentsByPostId(postId: number): Observable<Comment[] | null> {

@@ -7,12 +7,12 @@ import { Observable, catchError, of, throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class UserServiceService {
-  private baseURL = 'http://localhost:8000/user';
+  private baseURL = 'http://localhost:8000/users';
 
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers(): Observable<User[]> {
-    return this.httpClient.get<User[]>(`${this.baseURL}/Users`);
+    return this.httpClient.get<User[]>(`${this.baseURL}`);
   }
 
   getUserById(userID: number): Observable<User> {
@@ -21,7 +21,8 @@ export class UserServiceService {
 
   getUserByEmail(email: string): Observable<User | null> {
     let params = new HttpParams().set('email', email);
-    return this.httpClient.get<User>(`${this.baseURL}`, { params }).pipe(
+    let paramsEmail = params.get('email');
+    return this.httpClient.get<User>(`${this.baseURL}/${ paramsEmail }`).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 404) {
           return of(null);

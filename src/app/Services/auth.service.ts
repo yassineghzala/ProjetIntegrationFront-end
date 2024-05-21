@@ -21,17 +21,17 @@ export class AuthService {
         if (remember) {
           localStorage.setItem(
             this.USER_ID_KEY,
-            authenticatedUser.id.toString()
+            authenticatedUser.userId.toString()
           );
         } else {
           sessionStorage.setItem(
             this.USER_ID_KEY,
-            authenticatedUser.id.toString()
+            authenticatedUser.userId.toString()
           );
         }
 
         if (authenticatedUser.isAdmin) {
-          window.location.href = 'http://localhost:8000/admin';
+          window.location.href = 'http://localhost:8000/admin/';
         } else {
           Swal.fire({
             icon: 'success',

@@ -7,12 +7,12 @@ import { Post } from '../Classes/post';
   providedIn: 'root',
 })
 export class PostService {
-  private baseURL = 'http://localhost:8000/post';
+  private baseURL = 'http://localhost:8000/posts';
 
   constructor(private httpClient: HttpClient) {}
 
   getAllPosts(): Observable<Post[]> {
-    return this.httpClient.get<Post[]>(`${this.baseURL}/posts`);
+    return this.httpClient.get<Post[]>(`${this.baseURL}`);
   }
 
   getPostById(postId: number): Observable<Post> {

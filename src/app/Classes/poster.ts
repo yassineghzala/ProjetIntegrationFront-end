@@ -1,5 +1,6 @@
 export class Poster {
-  public id!: number;
+  [x: string]: any;
+  public posterId!: number;
   public quantity!: number;
   public artist!: string;
   public album!: string;

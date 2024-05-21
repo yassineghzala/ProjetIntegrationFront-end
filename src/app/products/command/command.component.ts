@@ -30,6 +30,8 @@ export class CommandComponent implements OnInit {
   getAllPosters() {
     this.posterService.getAllPosters().subscribe((data) => {
       this.posters = data;
+      console.log(this.posters);
+      
     });
   }
 
